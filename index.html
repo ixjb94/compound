@@ -56,7 +56,7 @@
                 <div>
                     <label>Order batch 1: </label>
                     <input type="number" placeholder="Number of orders" />
-                    <input type="number" placeholder="Win / Loss %"  step="0.01" />
+                    <input type="number" placeholder="Win / Loss %" step="0.01" min="-100" />
                 </div>
             </div>
         </form>
@@ -78,8 +78,8 @@
             const newRow = document.createElement("div");
             newRow.innerHTML = `
                 <label>Order batch ${inputContainer.children.length + 1}: </label>
-                <input type="number" placeholder="Number of orders" >
-                <input type="number" placeholder="Win / Loss %" >
+                <input type="number" placeholder="Number of orders" />
+                <input type="number" placeholder="Win / Loss %"  step="0.01" min="-100" />
             `;
             inputContainer.appendChild(newRow);
         });
