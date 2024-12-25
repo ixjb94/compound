@@ -1,7 +1,6 @@
 Calculate Compound Profit - by Batch Orders    
 
-# Live
-
+# [Live Demo](https://ixjb94.github.io/compound/)
 
 # Example
 5 30 (5 orders, 30% profit)    
