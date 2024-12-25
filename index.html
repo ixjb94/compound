@@ -11,9 +11,10 @@
         .green {
             color: green;
         }
-        .grid {
+        .container {
             display: flex;
             column-gap: 1rem;
+            /* grid-template-columns: 2fr 1fr 2fr; */
         }
         .buttons {
             margin-bottom: 1rem;
@@ -28,6 +29,12 @@
             border: 1px solid;
             padding: 5px;
         }
+        .map-results {
+            margin-top: 1rem;
+        }
+        .map-results p {
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -35,7 +42,7 @@
     <h1 class="mono">Calculate Compound Profit - by Batch Orders</h1>
     <h3 class="mono red">Use Negative Numbers for Losses: Example: -20</h3>
 
-    <div class="grid">
+    <div class="container">
         <form id="array-form">
             <div class="buttons">
                 <button type="button" id="add-row">Add New</button>
@@ -53,9 +60,12 @@
                 </div>
             </div>
         </form>
-
+        
+        <div class="map-results"></div>
         <pre id="results"></pre>
+        
     </div>
+    
 
     <script>
         const form = document.getElementById("array-form");
@@ -138,11 +148,19 @@
             }
 
             map.totalOrders = orderList.length;
-            map.winRate  = (map.win * 100) / map.totalOrders
-            map.lossRate = (map.loss * 100) / map.totalOrders
-            console.log(map)
+            map.winRate  = (map.win * 100) / map.totalOrders;
+            map.lossRate = (map.loss * 100) / map.totalOrders;
+
+            // inject
+            const mapElement = document.querySelector(".map-results")
+            mapElement.innerHTML = `
+                <p class="green">Win: ${map.win}</p>
+                <p class="green">Win rate: %${map.winRate.toLocaleString()}</p>
+                <p class="red">Loss: ${map.loss}</p>
+                <p class="red">Loss rate: %${map.lossRate.toLocaleString()}</p>
+                <p>Total: ${map.totalOrders}</p>
+            `
         }
-        
     </script>
 </body>
 </html>
