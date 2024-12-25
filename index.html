@@ -92,34 +92,55 @@
          * @param {Array<[number, number]>} orders 
          */
         function calculate(orders) {
-
+            
             const resultsElement = document.getElementById("results")
 
             let money = Number(capitalInput.value);
+
+            let map = {
+                win: 0,
+                loss: 0,
+                winRate: 0,
+                lossRate: 0,
+                totalOrders: 0,
+            };
+
             if (!money) money = 10;
             let orderList = [];
 
             resultsElement.innerHTML = `Start: $${money}\n`;
+
+            let previous = 0;
+            let color = "green";
+            let counter = 1;
 
             for (let index = 0; index < orders.length; ++index) {
             
                 const [order, percent] = orders[index];
 
                 for (let j = 0; j < order; ++j) {
+                    previous = money;
                     money = money + (money * (percent / 100));
                     orderList.push(money);
+
+                    if (money < previous) {
+                        color = "red";
+                        map.loss++;
+                    } else {
+                        color = "green";
+                        map.win++;
+                    }
+                    
+                    resultsElement.innerHTML += `<span class="${color}"> ${counter}- ${money.toLocaleString()} </span>\n`;
+
+                    counter++;
                 }
             }
 
-            for (let index = 0; index < orderList.length; index++) {
-                const element  = orderList[index];
-                const previous = orderList[index - 1];
-
-                let color = "green";
-                if (element < previous) color = "red";
-                resultsElement.innerHTML += `<span class="${color}"> ${index + 1} - ${element.toLocaleString()} </span>\n`;
-            }
-
+            map.totalOrders = orderList.length;
+            map.winRate  = (map.win * 100) / map.totalOrders
+            map.lossRate = (map.loss * 100) / map.totalOrders
+            console.log(map)
         }
         
     </script>
