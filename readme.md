@@ -10,4 +10,4 @@ Calculate Compound Profit - by Batch Orders
 You can have as much as you want to.
 
 # Images
-![Compound Results](https://raw.githubusercontent.com/ixjb94/compound/refs/heads/main/images/2.png "Compound Results")
+![Compound Results](https://raw.githubusercontent.com/ixjb94/compound/refs/heads/main/images/3.png "Compound Results")
