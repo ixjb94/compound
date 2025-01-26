@@ -140,8 +140,10 @@
                         color = "green";
                         map.win++;
                     }
+
+                    const profit = (money - previous).toFixed(2)
                     
-                    resultsElement.innerHTML += `<span class="${color}"> ${counter}- ${money.toLocaleString()} </span>\n`;
+                    resultsElement.innerHTML += `<span class="${color}"> ${counter}- ${money.toLocaleString()} ($${profit}) </span>\n`;
 
                     counter++;
                 }
